@@ -182,7 +182,7 @@ function loadInternships() {
     const internshipList = internships[currentLanguage];
     
     grid.innerHTML = internshipList.map(internship => `
-        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 internship-card">
             <h3 class="text-lg font-semibold mb-3">${internship.title}</h3>
             <div class="space-y-2 text-sm text-gray-600 dark:text-gray-300 mb-4">
                 <div class="flex items-center">
