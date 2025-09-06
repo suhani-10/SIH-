@@ -12,8 +12,10 @@
                 extend: {
                     colors: {
                         primary: '#FF6B35',
-                        secondary: '#262730',
-                        accent: '#F0F2F6'
+                        secondary: '#1a1a1a',
+                        accent: '#F0F2F6',
+                        charcoal: '#4a4e69',
+                        charcoalGray: '#36454F'
                     }
                 }
             }
@@ -28,13 +30,168 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.2);
+        }
+        .internship-card {
+            transition: all 0.3s ease;
+        }
+        .internship-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF6B35;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e55a2b;
+        }
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #FF6B35 #f1f1f1;
+        }
+        
+        /* Dark Mode Styles */
+        .dark {
+            background: #1a1a1a !important;
+            color: #ffffff;
+        }
+        
+        .dark body {
+            background: #1a1a1a !important;
+        }
+        
+        .dark header {
+            background-color: #1a1a1a !important;
+        }
+        
+        .dark .bg-white {
+            background-color: #2d2d44 !important;
+        }
+        
+        .dark .bg-gray-50 {
+            background-color: #4a4e69 !important;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #4a4e69 !important;
+        }
+        
+        .dark .text-gray-600 {
+            color: #cccccc !important;
+        }
+        
+        .dark .text-gray-700 {
+            color: #ffffff !important;
+        }
+        
+        .dark #home {
+            background: #1a1a1a !important;
+        }
+        
+        .dark #home .text-gray-800 {
+            color: #ffffff !important;
+        }
+        
+        .dark #home .text-gray-600 {
+            color: #ffffff !important;
+        }
+        
+        .dark #home h1, .dark #home h2, .dark #home h3, .dark #home p, .dark #home span, .dark #home div {
+            color: #ffffff !important;
+        }
+        
+        .dark #home .text-2xl, .dark #home .text-xl, .dark #home .text-lg, .dark #home .text-sm {
+            color: #ffffff !important;
+        }
+        
+        .dark #home .text-primary {
+            color: #FF6B35 !important;
+        }
+        
+        .dark #about {
+            background-color: #1a1a1a !important;
+        }
+        
+        .dark #about div[style*="linear-gradient"] {
+            background: #4a4e69 !important;
+        }
+        
+        .dark #about .card-hover:hover {
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .dark .bg-white {
+            background-color: #4a4e69 !important;
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .dark #applicationModal div[style*="linear-gradient"] {
+            background: #1a1a1a !important;
+        }
+        
+        .dark #about {
+            border-top: 1px solid #4a4e69;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2d2d44;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #4a4e69;
+        }
+        
+        .dark input, .dark select, .dark textarea {
+            background-color: #d0d0d0 !important;
+            color: #ffffff !important;
+            border-color: #4a4e69 !important;
+        }
+        
+        .dark header select {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+        
+        /* Fix smooth scrolling offset for sticky header */
+        section {
+            scroll-margin-top: 80px;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary text-gray-900 dark:text-white min-h-screen">
     <!-- Header -->
-    <header style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+    <header style="background-color: #f5f5f5;" class="dark:bg-charcoal border-b border-gray-200 dark:border-charcoalGray sticky top-0 z-50">
         <div class="streamlit-container">
             <nav class="flex items-center justify-between py-4">
                 <div class="flex items-center space-x-3">
@@ -47,6 +204,7 @@
                     <a href="#about" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="About" data-hi="के बारे में">About</a>
                     <a href="#internships" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Internships" data-hi="इंटर्नशिप">Internships</a>
                     <a href="#contact" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Contact" data-hi="संपर्क">Contact</a>
+                    <a href="https://chatbot-sih-theta.vercel.app/" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Chatbot" data-hi="चैटबॉट">Chatbot</a>
                 </div>
 
                 <div class="flex items-center space-x-4">
@@ -79,21 +237,21 @@
                 <div class="text-left">
                     <div class="mb-6">
                         <span class="inline-block bg-primary px-4 py-2 rounded-full text-sm font-medium mb-4" data-en="Government of India Initiative" data-hi="भारत सरकार की पहल">Government of India Initiative</span>
-                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-en="Prime Minister Internship Scheme" data-hi="प्रधानमंत्री इंटर्नशिप योजना">Prime Minister<br><span class="text-primary">Internship Scheme</span></h1>
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-en="Prime Minister Internship Scheme" data-hi="प्रधानमंत्री इंटर्नशिप योजना">Prime Minister<br><span class="text-orange-500">Internship Scheme</span></h1>
                         <p class="text-xl text-gray-600 mb-8 leading-relaxed" data-en="Empowering India's youth with real-world experience in top companies. Get hands-on training, monthly stipend, and build your career with government support." data-hi="शीर्ष कंपनियों में वास्तविक अनुभव के साथ भारत के युवाओं को सशक्त बनाना। व्यावहारिक प्रशिक्षण, मासिक वृत्तिका प्राप्त करें और सरकारी सहायता से अपना करियर बनाएं।">Empowering India's youth with real-world experience in top companies. Get hands-on training, monthly stipend, and build your career with government support.</p>
                     </div>
                     
                     <!-- Key Stats -->
                     <div class="grid grid-cols-3 gap-6 mb-8">
-                        <div class="text-center">
+                        <div class="text-center stats-card p-4 rounded-lg">
                             <div class="text-2xl font-bold text-orange">12</div>
                             <div class="text-sm text-gray-500" data-en="Months" data-hi="महीने">Months</div>
                         </div>
-                        <div class="text-center">
+                        <div class="text-center stats-card p-4 rounded-lg">
                             <div class="text-2xl font-bold text-orange">₹5000</div>
                             <div class="text-sm text-gray-500" data-en="Monthly" data-hi="मासिक">Monthly</div>
                         </div>
-                        <div class="text-center">
+                        <div class="text-center stats-card p-4 rounded-lg">
                             <div class="text-2xl font-bold text-orange">500+</div>
                             <div class="text-sm text-gray-500" data-en="Companies" data-hi="कंपनियां">Companies</div>
                         </div>
@@ -101,8 +259,8 @@
                     
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToInternships()" class="bg-primary text-white hover:bg-primary/90 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg" data-en="Apply Now" data-hi="अभी आवेदन करें">Apply Now</button>
-                        <button class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold text-lg transition-colors" data-en="Learn More" data-hi="और जानें">Learn More</button>
+                        <button onclick="scrollToInternships()" class="bg-primary text-white hover:bg-primary/90 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl" data-en="Apply Now" data-hi="अभी आवेदन करें">Apply Now</button>
+                        <button class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg" data-en="Learn More" data-hi="और जानें">Learn More</button>
                     </div>
                 </div>
                 
@@ -117,7 +275,7 @@
                                         <i class="fas fa-graduation-cap text-primary text-3xl"></i>
                                     </div>
                                     <h3 class="text-2xl font-bold mb-2" data-en="Ready for your first job?" data-hi="अपनी पहली नौकरी के लिए तैयार?">Ready for your<br>first job?</h3>
-                                    <p class="text-orange-200" data-en="Join thousands of interns" data-hi="हजारों इंटर्न के साथ जुड़ें">Join thousands of interns</p>
+                                    <p class="text-orange-300" data-en="Join thousands of interns" data-hi="हजारों इंटर्न के साथ जुड़ें">Join thousands of interns</p>
                                 </div>
                             </div>
                         </div>
@@ -139,12 +297,12 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-accent dark:bg-gray-800">
+    <section id="about" class="py-16 bg-white dark:bg-gray-800 border-t border-orange-500">
         <div class="streamlit-container">
             <h2 class="text-3xl font-bold text-center mb-12" data-en="About PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना के बारे में">About PM Internship Scheme</h2>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 card-hover">
                     <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-users text-primary text-xl"></i>
                     </div>
@@ -152,7 +310,7 @@
                     <p class="text-gray-600 dark:text-gray-300 text-sm" data-en="Graduate/Post-graduate students from recognized universities" data-hi="मान्यता प्राप्त विश्वविद्यालयों के स्नातक/स्नातकोत्तर छात्र">Graduate/Post-graduate students from recognized universities</p>
                 </div>
                 
-                <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 card-hover">
                     <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-clock text-primary text-xl"></i>
                     </div>
@@ -160,7 +318,7 @@
                     <p class="text-gray-600 dark:text-gray-300 text-sm" data-en="3-12 months internship program" data-hi="3-12 महीने का इंटर्नशिप कार्यक्रम">3-12 months internship program</p>
                 </div>
                 
-                <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 card-hover">
                     <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-rupee-sign text-primary text-xl"></i>
                     </div>
@@ -172,7 +330,7 @@
     </section>
 
     <!-- Eligibility & Benefits Section -->
-    <section class="py-16">
+    <section class="py-16 border-t border-orange-500 dark:border-charcoal">
         <div class="streamlit-container">
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Eligibility Section -->
@@ -180,7 +338,7 @@
                     <h2 class="text-3xl font-bold mb-8" data-en="Are you Eligible?" data-hi="क्या आप पात्र हैं?">Are you <span class="text-primary">Eligible?</span></h2>
                     
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <span class="text-2xl font-bold text-primary">21</span>
                             </div>
@@ -188,7 +346,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300" data-en="21-24 Years" data-hi="21-24 वर्ष">21-24 Years</p>
                         </div>
                         
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-briefcase text-primary text-xl"></i>
                             </div>
@@ -196,7 +354,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300" data-en="Not Employed Full Time" data-hi="पूर्णकालिक रोजगार में नहीं">Not Employed Full Time</p>
                         </div>
                         
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-graduation-cap text-primary text-xl"></i>
                             </div>
@@ -204,7 +362,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300" data-en="Not Enrolled Full Time" data-hi="पूर्णकालिक नामांकित नहीं">Not Enrolled Full Time</p>
                         </div>
                         
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-users text-primary text-xl"></i>
                             </div>
@@ -222,28 +380,28 @@
                     <h2 class="text-3xl font-bold mb-8" data-en="Core Benefits for PM Internship Scheme" data-hi="पीएम इंटर्नशिप योजना के मुख्य लाभ">Core Benefits <span class="text-primary">for PM Internship Scheme</span></h2>
                     
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-building text-primary text-xl"></i>
                             </div>
                             <p class="text-sm text-gray-600 dark:text-gray-300" data-en="12 months real-life experience in India's top companies" data-hi="भारत की शीर्ष कंपनियों में 12 महीने का वास्तविक अनुभव">12 months real-life experience in India's top companies</p>
                         </div>
                         
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-wallet text-primary text-xl"></i>
                             </div>
                             <p class="text-sm text-gray-600 dark:text-gray-300" data-en="Monthly assistance of ₹4500 by Government of India and ₹500 by Industry" data-hi="भारत सरकार द्वारा ₹4500 और उद्योग द्वारा ₹500 मासिक सहायता">Monthly assistance of ₹4500 by Government of India and ₹500 by Industry</p>
                         </div>
                         
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-gift text-primary text-xl"></i>
                             </div>
                             <p class="text-sm text-gray-600 dark:text-gray-300" data-en="One-time Grant of ₹6000 for incidentals" data-hi="आकस्मिक खर्चों के लिए ₹6000 का एकबारगी अनुदान">One-time Grant of ₹6000 for incidentals</p>
                         </div>
                         
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="bg-white dark:bg-secondary p-6 rounded-lg border border-orange-500 dark:border-gray-700 text-center card-hover">
                             <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fas fa-compass text-primary text-xl"></i>
                             </div>
@@ -380,7 +538,7 @@
                     </div>
                     
                     <!-- Social Media -->
-                    <div class="bg-white/80 backdrop-blur-lg dark:bg-gray-800/80 p-8 rounded-3xl shadow-2xl border border-white/20">
+                    <div class="bg-white/80 backdrop-blur-lg dark:bg-gray-800/80 p-8 rounded-3xl shadow-2xl border border-white/20 card-hover">
                         <h4 class="text-xl font-bold text-gray-800 dark:text-white mb-6 text-center" data-en="Follow Us" data-hi="हमें फॉलो करें">Follow Us</h4>
                         <div class="flex justify-center space-x-4">
                             <a href="#" class="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
@@ -403,9 +561,48 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p data-en="© 2024 PM Internship AI Assistant. All rights reserved." data-hi="© 2024 पीएम इंटर्नशिप एआई सहायक। सभी अधिकार सुरक्षित।">© 2024 PM Internship AI Assistant. All rights reserved.</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Contact Us Section -->
+                <div>
+                    <h3 class="font-semibold mb-4 text-gray-300">Contact Us</h3>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <p>A Wing, 5th Floor, Shastri Bhawan, Dr Rajendra Prasad Rd, New Delhi-110001</p>
+                        <p>pminternship[at]mca.gov.in</p>
+                        <p>1800 11 6090</p>
+                    </div>
+                </div>
+                
+                <!-- Social Media Section -->
+                <div>
+                    <h3 class="font-semibold mb-4 text-gray-300">Social Media</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Section -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="text-center space-y-2">
+                    <p class="text-sm text-gray-400">Build Version: 1756988512377</p>
+                    <p class="text-sm text-gray-400">This site is owned by Ministry of Corporate Affairs.</p>
+                    <p class="text-sm text-gray-400">© 2024 PM-INTERNSHIP, All Rights Reserved.</p>
+                    <p class="text-sm text-gray-400">Technical collaboration with BISAG-N</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -476,19 +673,19 @@
                             <div class="grid md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Full Name *" data-hi="पूरा नाम *">Full Name *</label>
-                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="text" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Email Address *" data-hi="ईमेल पता *">Email Address *</label>
-                                    <input type="email" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="email" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Phone Number *" data-hi="फोन नंबर *">Phone Number *</label>
-                                    <input type="tel" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="tel" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Date of Birth *" data-hi="जन्म तिथि *">Date of Birth *</label>
-                                    <input type="date" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="date" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                             </div>
                         </div>
@@ -499,7 +696,7 @@
                             <div class="grid md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Highest Qualification *" data-hi="उच्चतम योग्यता *">Highest Qualification *</label>
-                                    <select required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <select required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                         <option value="">Select Qualification</option>
                                         <option value="bachelor">Bachelor's Degree</option>
                                         <option value="master">Master's Degree</option>
@@ -508,15 +705,15 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Field of Study *" data-hi="अध्ययन का क्षेत्र *">Field of Study *</label>
-                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="text" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="University/College *" data-hi="विश्वविद्यालय/कॉलेज *">University/College *</label>
-                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="text" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="CGPA/Percentage *" data-hi="सीजीपीए/प्रतिशत *">CGPA/Percentage *</label>
-                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="text" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                             </div>
                         </div>
@@ -527,17 +724,17 @@
                             <div class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Resume/CV *" data-hi="रिज्यूम/सीवी *">Resume/CV *</label>
-                                    <input type="file" required accept=".pdf,.doc,.docx" class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="file" required accept=".pdf,.doc,.docx" class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                     <p class="text-xs text-gray-500 mt-1">PDF, DOC, or DOCX format (Max 5MB)</p>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Academic Transcripts *" data-hi="शैक्षिक प्रमाणपत्र *">Academic Transcripts *</label>
-                                    <input type="file" required accept=".pdf" class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="file" required accept=".pdf" class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                     <p class="text-xs text-gray-500 mt-1">PDF format only (Max 5MB)</p>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Cover Letter" data-hi="कवर लेटर">Cover Letter</label>
-                                    <textarea rows="4" class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none" placeholder="Why are you interested in this internship?"></textarea>
+                                    <textarea rows="4" class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none" placeholder="Why are you interested in this internship?"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -548,11 +745,11 @@
                             <div class="grid md:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Preferred Start Date *" data-hi="पसंदीदा प्रारंभ तिथि *">Preferred Start Date *</label>
-                                    <input type="date" required class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <input type="date" required class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2" data-en="Are you available immediately?" data-hi="क्या आप तुरंत उपलब्ध हैं?">Are you available immediately?</label>
-                                    <select class="w-full p-3 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                                    <select class="w-full p-3 border border-orange-500 rounded focus:border-primary focus:outline-none">
                                         <option value="yes">Yes, immediately</option>
                                         <option value="2weeks">Within 2 weeks</option>
                                         <option value="1month">Within 1 month</option>
