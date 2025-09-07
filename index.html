@@ -188,6 +188,13 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script
+      async
+      crossorigin="anonymous"
+      data-clerk-publishable-key="pk_test_YWR2YW5jZWQtcGVnYXN1cy00LmNsZXJrLmFjY291bnRzLmRldiQ"
+      src="https://advanced-pegasus-4.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
+      type="text/javascript">
+    </script>
 </head>
 <body style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary text-gray-900 dark:text-white min-h-screen">
     <!-- Header -->
@@ -217,6 +224,18 @@
                         <i class="fas fa-moon dark:hidden text-gray-600"></i>
                         <i class="fas fa-sun hidden dark:block text-gray-300"></i>
                     </button>
+                    
+                    <!-- Clerk Auth Components -->
+                    <div id="clerk-auth" class="flex items-center space-x-2">
+                        <div id="clerk-signed-out">
+                            <button id="sign-in-btn" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition-colors text-sm">
+                                Sign In
+                            </button>
+                        </div>
+                        <div id="clerk-signed-in" class="hidden">
+                            <div id="clerk-user-button"></div>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -786,5 +805,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="final-auth.js"></script>
 </body>
 </html>
