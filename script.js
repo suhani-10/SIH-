@@ -1,10 +1,9 @@
-// Global variables
+
 let currentLanguage = 'en';
 let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
 let recognition;
 let synthesis = window.speechSynthesis;
 
-// Sample internship data
 const internships = {
     en: [
         {
@@ -434,6 +433,15 @@ function scrollToInternships() {
 
 // Application Modal Functions
 function openApplicationModal(internshipTitle) {
+    // Check if user is authenticated
+    if (!window.clerkAuth?.isSignedIn()) {
+        alert('Please sign in to apply for internships.');
+        if (window.clerkAuth) {
+            document.getElementById('sign-in-btn').click();
+        }
+        return;
+    }
+    
     document.getElementById('applicationModal').classList.remove('hidden');
     document.getElementById('applicationTitle').textContent = `Apply for: ${internshipTitle}`;
     document.body.style.overflow = 'hidden';
