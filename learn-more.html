@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Learn more – PM Internship Scheme</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#FF6B35',
+                    secondary: '#262730',
+                    accent: '#F0F2F6'
+                },
+                animation: {
+                    fadeIn: 'fadeIn 1s ease-out forwards',
+                    slideIn: 'slideIn 1s ease-out forwards',
+                    bounceIn: 'bounceIn 1s ease-out forwards',
+                    floatUp: 'floatUp 2s ease-in-out infinite alternate'
+                },
+                keyframes: {
+                    fadeIn: {
+                        '0%': { opacity: '0' },
+                        '100%': { opacity: '1' }
+                    },
+                    slideIn: {
+                        '0%': { transform: 'translateY(50px)', opacity: '0' },
+                        '100%': { transform: 'translateY(0)', opacity: '1' }
+                    },
+                    bounceIn: {
+                        '0%': { transform: 'scale(0.5)', opacity: '0' },
+                        '60%': { transform: 'scale(1.05)', opacity: '1' },
+                        '100%': { transform: 'scale(1)', opacity: '1' }
+                    },
+                    floatUp: {
+                        '0%': { transform: 'translateY(0)' },
+                        '100%': { transform: 'translateY(-15px)' }
+                    }
+                }
+            }
+        }
+    }
+</script>
+<style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    .hidden-animation { opacity: 0; transform: translateY(50px); }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+<!-- Hero Section -->
+<section class="relative max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10 bg-gradient-to-r from-primary/20 to-accent rounded-3xl overflow-hidden hidden-animation hero">
+    <div class="absolute top-0 left-0 w-32 h-32 bg-primary/30 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-48 h-48 bg-secondary/20 rounded-full translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="flex-1 text-center md:text-left space-y-6">
+        <h1 class="text-5xl font-bold mb-4 text-secondary dark:text-white leading-tight">Explore Opportunities Anytime, Anywhere</h1>
+        <p class="text-gray-700 dark:text-gray-200 text-lg">Join the PM Internship Scheme to gain real-world experience, enhance your skills, and build a network with experts and leaders. Unlock your potential with hands-on projects and mentorship from top professionals.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+                <div class="bg-primary text-white p-3 rounded-full"><i class="fas fa-lightbulb"></i></div>
+                <div>
+                    <h3 class="font-semibold text-sm">Innovative Projects</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-300">Work on real challenges and contribute innovative solutions.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+                <div class="bg-primary text-white p-3 rounded-full"><i class="fas fa-network-wired"></i></div>
+                <div>
+                    <h3 class="font-semibold text-sm">Networking</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-300">Connect with experts, peers, and industry leaders.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-1 relative">
+        <img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-58bc-61f7-8c52-2a1a06ce33a2/raw?se=2025-09-07T12%3A01%3A21Z&sp=r&sv=2024-08-04&sr=b&scid=c517d76b-6944-5fa4-a4ee-7316d59c747d&skoid=c953efd6-2ae8-41b4-a6d6-34b1475ac07c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-06T16%3A43%3A49Z&ske=2025-09-07T16%3A43%3A49Z&sks=b&skv=2024-08-04&sig=W2Zjf/4mIQpSJWejSSiF6RXldWgEsa/5wqlAwLWGNB8%3D"
+             alt="Internship Illustration" class="w-full rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-20 bg-primary/20 rounded-full blur-3xl animate-floatUp"></div>
+    </div>
+</section>
+
+<!-- Our Values Section -->
+<section class="max-w-6xl mx-auto px-6 py-16 mt-10 hidden-animation values">
+    <h2 class="text-3xl font-bold text-center mb-10">Our Values</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="p-6 bg-primary/10 dark:bg-primary/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <div class="mx-auto mb-4 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl"><i class="fas fa-clock"></i></div>
+            <h3 class="font-semibold mb-2 text-lg">Apply Anytime</h3>
+            <p class="text-gray-600 dark:text-gray-300">Submit your applications 24/7 with ease and flexibility.</p>
+        </div>
+        <div class="p-6 bg-primary/10 dark:bg-primary/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <div class="mx-auto mb-4 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl"><i class="fas fa-users"></i></div>
+            <h3 class="font-semibold mb-2 text-lg">Work with Experts</h3>
+            <p class="text-gray-600 dark:text-gray-300">Collaborate with professionals and mentors to gain insights.</p>
+        </div>
+        <div class="p-6 bg-primary/10 dark:bg-primary/20 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <div class="mx-auto mb-4 w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl"><i class="fas fa-laptop"></i></div>
+            <h3 class="font-semibold mb-2 text-lg">Learn and Grow</h3>
+            <p class="text-gray-600 dark:text-gray-300">Access resources, workshops, and learning materials to boost your career journey.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose PM Internship Section -->
+<section class="max-w-6xl mx-auto px-6 py-16 mt-10 hidden-animation choose">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Choose PM Internship?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-xl">Real-World Experience</h3>
+            <p class="text-gray-600 dark:text-gray-300">Work on live projects and gain practical problem-solving skills.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-xl">Networking</h3>
+            <p class="text-gray-600 dark:text-gray-300">Connect with leaders, peers, and organizations to build long-term relationships.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-xl">Skill Development</h3>
+            <p class="text-gray-600 dark:text-gray-300">Learn new tools, techniques, and frameworks that enhance your career readiness.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-xl">Mentorship</h3>
+            <p class="text-gray-600 dark:text-gray-300">Get guidance from experienced professionals to accelerate growth.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Success Stories Section -->
+<section class="max-w-6xl mx-auto px-6 py-16 bg-primary/10 dark:bg-gray-700 rounded-3xl shadow-lg mt-10 hidden-animation stories">
+    <h2 class="text-3xl font-bold text-center mb-10">Success Stories</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-lg">Aarav S.</h3>
+            <p class="text-gray-600 dark:text-gray-300">Started as a data intern and now leads a small analytics team. Gained hands-on experience and confidence to tackle real-world challenges.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-lg">Meera K.</h3>
+            <p class="text-gray-600 dark:text-gray-300">Joined as a content intern, developed strong communication skills, and now works with top industry professionals on major projects.</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+            <h3 class="font-semibold mb-2 text-lg">Rohan P.</h3>
+            <p class="text-gray-600 dark:text-gray-300">Leveraged mentorship opportunities, learned advanced coding skills, and secured a full-time role at a reputed tech company.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center p-6 border-t bg-white dark:bg-gray-800 mt-10">
+    <button onclick="goBack()" class="bg-primary text-white px-6 py-2 rounded hover:bg-primary/90 transition-colors">Back</button>
+</footer>
+
+<script>
+function goBack() { window.location.href = 'index.html'; }
+
+// Scroll-triggered animations using Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.remove('hidden-animation');
+            entry.target.classList.add('animate-slideIn');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.hidden-animation').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
