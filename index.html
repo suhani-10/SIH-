@@ -181,9 +181,106 @@
             color: #ffffff !important;
         }
         
-        /* Fix smooth scrolling offset for sticky header */
+        /* Dynamic Island Styles */
+        .dynamic-island {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .dynamic-island:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ffa366);
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .nav-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-control:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: rgba(255, 107, 53, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Dark mode adjustments */
+        .dark .nav-link {
+            color: #d1d5db;
+        }
+        
+        .dark .nav-link:hover {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.15);
+        }
+        
+        .dark .nav-control {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+        }
+        
+        .dark .nav-control:hover {
+            background: rgba(255, 107, 53, 0.2);
+            border-color: rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .dynamic-island {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+        
+        /* Fix smooth scrolling offset for dynamic island */
         section {
-            scroll-margin-top: 80px;
+            scroll-margin-top: 120px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -197,122 +294,305 @@
     </script>
 </head>
 <body style="background: linear-gradient(135deg, #ffffff 0%, #fff5f0 50%, #ffede0 100%);" class="dark:bg-secondary text-gray-900 dark:text-white min-h-screen">
-    <!-- Header -->
-    <header style="background-color: #f5f5f5;" class="dark:bg-charcoal border-b border-gray-200 dark:border-charcoalGray sticky top-0 z-50">
-        <div class="streamlit-container">
-            <nav class="flex items-center justify-between py-4">
-                <div class="flex items-center space-x-3">
-                    <i class="fas fa-graduation-cap text-2xl text-primary"></i>
-                    <span class="text-xl font-semibold" data-en="PM Internship AI" data-hi="पीएम इंटर्नशिप एआई">PM Internship AI</span>
+    <!-- Dynamic Island Header -->
+    <header class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <nav class="dynamic-island bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 rounded-full px-8 py-4 shadow-2xl">
+            <div class="flex items-center space-x-8">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 nav-item">
+                    <div class="w-8 h-8 bg-gradient-to-r from-primary to-orange-400 rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white text-sm"></i>
+                    </div>
+                    <span class="font-bold text-gray-800 dark:text-white hidden lg:block" data-en="PM Internship" data-hi="पीएम इंटर्नशिप">PM Internship</span>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Home" data-hi="होम">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="About" data-hi="के बारे में">About</a>
-                    <a href="#internships" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Internships" data-hi="इंटर्नशिप">Internships</a>
-                    <a href="#contact" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Contact" data-hi="संपर्क">Contact</a>
-                    <a href="https://chatbot-sih-theta.vercel.app/" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors" data-en="Chatbot" data-hi="चैटबॉट">Chatbot</a>
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="nav-link" data-en="Home" data-hi="होम">Home</a>
+                    <a href="#about" class="nav-link" data-en="About" data-hi="के बारे में">About</a>
+                    <a href="#internships" class="nav-link" data-en="Internships" data-hi="इंटर्नशिप">Internships</a>
+                    <a href="#contact" class="nav-link" data-en="Contact" data-hi="संपर्क">Contact</a>
+                    <a href="https://chatbot-sih-theta.vercel.app/" class="nav-link" data-en="Chatbot" data-hi="चैटबॉट">Chatbot</a>
                 </div>
 
-                <div class="flex items-center space-x-4">
-                    <select id="languageToggle" class="bg-accent dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm">
+                <!-- Controls -->
+                <div class="flex items-center space-x-3">
+                    <select id="languageToggle" class="nav-control">
                         <option value="en">EN</option>
                         <option value="hi">हि</option>
                     </select>
                     
-                    <button id="darkModeToggle" class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <button id="darkModeToggle" class="nav-control w-10 h-10 rounded-full flex items-center justify-center">
                         <i class="fas fa-moon dark:hidden text-gray-600"></i>
                         <i class="fas fa-sun hidden dark:block text-gray-300"></i>
                     </button>
                     
-                    <!-- Clerk Auth Components -->
+                    <!-- Auth -->
                     <div id="clerk-auth" class="flex items-center space-x-2">
                         <div id="clerk-signed-out">
-                            <button id="sign-in-btn" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition-colors text-sm">
+                            <button id="sign-in-btn" class="bg-gradient-to-r from-primary to-orange-400 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 text-sm font-medium">
                                 Sign In
                             </button>
                         </div>
-                        <div id="clerk-signed-in" class="hidden">
+                        <div id="clerk-signed-in" class="hidden flex items-center space-x-2">
                             <div id="clerk-user-button"></div>
                         </div>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Banner Section -->
-    <section id="home" class="relative text-gray-800 overflow-hidden" style="background: linear-gradient(135deg, #f5f5dc 0%, #fff5f0 50%, #ffede0 100%);">
-        <!-- Background Pattern -->
+    <section id="home" class="relative text-gray-800 overflow-hidden pt-24" style="background: linear-gradient(135deg, #f5f5dc 0%, #fff5f0 50%, #ffede0 100%);">
+        <!-- Floating Background Elements -->
         <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent"></div>
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full"></div>
+            <div class="absolute top-20 left-10 w-16 h-16 bg-primary rounded-full animate-pulse"></div>
+            <div class="absolute top-40 right-20 w-12 h-12 bg-orange-400 rounded-full animate-bounce"></div>
+            <div class="absolute bottom-32 left-1/4 w-8 h-8 bg-primary rounded-full animate-ping"></div>
+            <div class="absolute top-1/3 right-1/3 w-6 h-6 bg-orange-300 rounded-full animate-pulse"></div>
         </div>
         
         <div class="streamlit-container relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[500px] py-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[600px] py-16">
                 <!-- Left Content -->
-                <div class="text-left">
-                    <div class="mb-6">
-                        <span class="inline-block bg-primary px-4 py-2 rounded-full text-sm font-medium mb-4" data-en="Government of India Initiative" data-hi="भारत सरकार की पहल">Government of India Initiative</span>
-                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-en="Prime Minister Internship Scheme" data-hi="प्रधानमंत्री इंटर्नशिप योजना">Prime Minister<br><span class="text-orange-500">Internship Scheme</span></h1>
-                        <p class="text-xl text-gray-600 mb-8 leading-relaxed" data-en="Empowering India's youth with real-world experience in top companies. Get hands-on training, monthly stipend, and build your career with government support." data-hi="शीर्ष कंपनियों में वास्तविक अनुभव के साथ भारत के युवाओं को सशक्त बनाना। व्यावहारिक प्रशिक्षण, मासिक वृत्तिका प्राप्त करें और सरकारी सहायता से अपना करियर बनाएं।">Empowering India's youth with real-world experience in top companies. Get hands-on training, monthly stipend, and build your career with government support.</p>
+                <div class="text-left relative">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
+                        <i class="fas fa-briefcase text-primary mr-2"></i>
+                        <span class="text-sm font-medium text-primary" data-en="Government Initiative" data-hi="सरकारी पहल">Government Initiative</span>
                     </div>
                     
-                    <!-- Key Stats -->
-                    <div class="grid grid-cols-3 gap-6 mb-8">
-                        <div class="text-center stats-card p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-orange">12</div>
-                            <div class="text-sm text-gray-500" data-en="Months" data-hi="महीने">Months</div>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6" data-en="PM INTERNSHIP SCHEME" data-hi="पीएम इंटर्नशिप योजना">
+                        <span class="text-gray-800">PM INTERNSHIP</span><br>
+                        <span class="text-primary">SCHEME</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed" data-en="Transform your career with real-world experience in India's top companies. Get hands-on training, monthly stipend, and build your future." data-hi="भारत की शीर्ष कंपनियों में वास्तविक अनुभव के साथ अपना करियर बदलें।">Transform your career with real-world experience in India's top companies. Get hands-on training, monthly stipend, and build your future.</p>
+                    
+                    <!-- Stats Row -->
+                    <div class="flex items-center space-x-8 mb-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">₹5000</div>
+                            <div class="text-sm text-gray-500">Monthly Stipend</div>
                         </div>
-                        <div class="text-center stats-card p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-orange">₹5000</div>
-                            <div class="text-sm text-gray-500" data-en="Monthly" data-hi="मासिक">Monthly</div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">12</div>
+                            <div class="text-sm text-gray-500">Months Duration</div>
                         </div>
-                        <div class="text-center stats-card p-4 rounded-lg">
-                            <div class="text-2xl font-bold text-orange">500+</div>
-                            <div class="text-sm text-gray-500" data-en="Companies" data-hi="कंपनियां">Companies</div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">500+</div>
+                            <div class="text-sm text-gray-500">Companies</div>
                         </div>
                     </div>
                     
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToInternships()" class="bg-primary text-white hover:bg-primary/90 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl" data-en="Apply Now" data-hi="अभी आवेदन करें">Apply Now</button>
-                        <a href="learn-more.html"class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg" data-en="Learn More" data-hi="और जानें">Learn More</a>
+                        <button onclick="scrollToInternships()" class="bg-primary text-white hover:bg-primary/90 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:scale-105 hover:shadow-xl flex items-center justify-center" data-en="Apply Now" data-hi="अभी आवेदन करें">
+                            <i class="fas fa-rocket mr-2"></i>Apply Now
+                        </button>
+                        <a href="learn-more.html" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center" data-en="Learn More" data-hi="और जानें">
+                            <i class="fas fa-info-circle mr-2"></i>Learn More
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Right Visual -->
-                <div class="hidden lg:flex justify-center items-center">
+                <!-- Right Visual - Enhanced Computer Display -->
+                <div class="flex justify-center items-center relative">
+                    <!-- Floating Job/Internship Icons -->
+                    <div class="absolute -top-8 -left-8 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center animate-float">
+                        <i class="fas fa-graduation-cap text-primary"></i>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 w-12 h-12 bg-orange-400/20 rounded-full flex items-center justify-center animate-float" style="animation-delay: 1s;">
+                        <i class="fas fa-chart-line text-orange-400"></i>
+                    </div>
+                    <div class="absolute top-1/2 -right-12 w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center animate-float" style="animation-delay: 2s;">
+                        <i class="fas fa-star text-primary"></i>
+                    </div>
+                    <div class="absolute -top-4 right-8 w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center animate-float" style="animation-delay: 0.5s;">
+                        <i class="fas fa-handshake text-green-500"></i>
+                    </div>
+                    <div class="absolute -bottom-4 left-8 w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center animate-float" style="animation-delay: 1.5s;">
+                        <i class="fas fa-laptop-code text-blue-500"></i>
+                    </div>
+                    <div class="absolute top-8 -left-12 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center animate-float" style="animation-delay: 2.5s;">
+                        <i class="fas fa-building text-purple-500"></i>
+                    </div>
+                    
+                    <!-- Job Cards Floating Around -->
+                    <div class="absolute -top-16 left-16 bg-white/90 p-3 rounded-lg shadow-lg animate-float" style="animation-delay: 3s;">
+                        <div class="text-xs font-semibold text-gray-800">Software Engineer</div>
+                        <div class="text-xs text-primary">₹25,000/month</div>
+                    </div>
+                    <div class="absolute -bottom-16 right-16 bg-white/90 p-3 rounded-lg shadow-lg animate-float" style="animation-delay: 4s;">
+                        <div class="text-xs font-semibold text-gray-800">Data Analyst</div>
+                        <div class="text-xs text-primary">₹20,000/month</div>
+                    </div>
+                    <div class="absolute top-32 -left-20 bg-white/90 p-3 rounded-lg shadow-lg animate-float" style="animation-delay: 5s;">
+                        <div class="text-xs font-semibold text-gray-800">Marketing Intern</div>
+                        <div class="text-xs text-primary">₹15,000/month</div>
+                    </div>
+                    
                     <div class="relative">
-                        <!-- Main Illustration -->
-                        <div class="w-96 h-96 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <div class="w-80 h-80 bg-gradient-to-br from-white/20 to-orange-200/20 rounded-full flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <i class="fas fa-graduation-cap text-primary text-3xl"></i>
+                        <!-- Computer Monitor -->
+                        <div class="bg-gray-800 p-4 rounded-t-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                            <div class="bg-gradient-to-br from-orange-200 via-orange-100 to-orange-50 rounded-lg p-8 w-80 h-60 relative overflow-hidden">
+                                <!-- Screen Content -->
+                                <div class="absolute inset-0 p-6">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-briefcase text-primary mr-2"></i>
+                                        <h2 class="text-2xl font-bold text-gray-800">Career</h2>
                                     </div>
-                                    <h3 class="text-2xl font-bold mb-2" data-en="Ready for your first job?" data-hi="अपनी पहली नौकरी के लिए तैयार?">Ready for your<br>first job?</h3>
-                                    <p class="text-orange-300" data-en="Join thousands of interns" data-hi="हजारों इंटर्न के साथ जुड़ें">Join thousands of interns</p>
+                                    <h3 class="text-xl text-primary mb-4">Portal</h3>
+                                    
+                                    <!-- Typing Animation -->
+                                    <div class="mb-4">
+                                        <div class="text-sm font-semibold text-gray-700 mb-2" id="typingText"></div>
+                                        <div class="w-16 h-1 bg-primary rounded animate-pulse"></div>
+                                    </div>
+                                    
+                                    <div class="text-xs text-gray-600 mb-4">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                                            <span>Applications: 12</span>
+                                        </div>
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></div>
+                                            <span>Interviews: 3</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse"></div>
+                                            <span>Job Offers: 1</span>
+                                        </div>
+                                    </div>
+                                    <!-- Person working illustration -->
+                                    <div class="absolute bottom-4 right-4 w-24 h-16 bg-gradient-to-br from-gray-300 to-gray-400 rounded opacity-80 flex items-center justify-center">
+                                        <i class="fas fa-user-graduate text-gray-600"></i>
+                                    </div>
                                 </div>
+                                <!-- Animated elements -->
+                                <div class="absolute top-4 right-4 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-orange-100/50 to-orange-200/30"></div>
                             </div>
                         </div>
-                        
-                        <!-- Floating Elements -->
-                        <div class="absolute -top-4 -left-4 w-16 h-16 bg-white/30 rounded-full flex items-center justify-center">
-                            <i class="fas fa-briefcase text-primary"></i>
-                        </div>
-                        <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-chart-line text-white"></i>
-                        </div>
-                        <div class="absolute top-1/2 -right-8 w-12 h-12 bg-white/40 rounded-full flex items-center justify-center">
-                            <i class="fas fa-star text-primary text-sm"></i>
-                        </div>
+                        <!-- Monitor Stand -->
+                        <div class="bg-gray-300 w-20 h-8 mx-auto rounded-b-lg"></div>
+                        <div class="bg-gray-400 w-32 h-4 mx-auto rounded-full"></div>
                     </div>
                 </div>
             </div>
+            
+
         </div>
+        
+        <!-- Wave Pattern at Bottom -->
+        <div class="absolute bottom-0 left-0 right-0 overflow-hidden">
+            <svg class="w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="url(#waveGradient)" opacity="0.8"/>
+                <path d="M0,80 C400,20 800,100 1200,40 L1200,120 L0,120 Z" fill="url(#waveGradient2)" opacity="0.6"/>
+                <defs>
+                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f5f5dc;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#ffede0;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ffede0;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#ffa366;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#f5f5dc;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            
+            <!-- Glitter Effect -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="glitter-particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+                <div class="glitter-particle" style="left: 25%; top: 60%; animation-delay: 0.5s;"></div>
+                <div class="glitter-particle" style="left: 45%; top: 30%; animation-delay: 1s;"></div>
+                <div class="glitter-particle" style="left: 65%; top: 70%; animation-delay: 1.5s;"></div>
+                <div class="glitter-particle" style="left: 80%; top: 40%; animation-delay: 2s;"></div>
+                <div class="glitter-particle" style="left: 90%; top: 80%; animation-delay: 2.5s;"></div>
+                <div class="glitter-particle" style="left: 15%; top: 85%; animation-delay: 3s;"></div>
+                <div class="glitter-particle" style="left: 35%; top: 15%; animation-delay: 3.5s;"></div>
+                <div class="glitter-particle" style="left: 55%; top: 90%; animation-delay: 4s;"></div>
+                <div class="glitter-particle" style="left: 75%; top: 25%; animation-delay: 4.5s;"></div>
+            </div>
+        </div>
+        
+        <!-- Add floating animation and glitter CSS -->
+        <style>
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+            
+            .glitter-particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: linear-gradient(45deg, #ff6b35, #ffa366, #ffede0);
+                border-radius: 50%;
+                animation: glitter 5s infinite;
+                box-shadow: 0 0 6px rgba(255, 107, 53, 0.8);
+            }
+            
+            @keyframes glitter {
+                0%, 100% {
+                    opacity: 0;
+                    transform: scale(0) rotate(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1) rotate(180deg);
+                }
+            }
+        </style>
+        
+        <!-- Typing Animation Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const typingElement = document.getElementById('typingText');
+                const messages = [
+                    'Ready for your first job?',
+                    'Start your career journey!',
+                    'Join top companies today!',
+                    'Build your future now!'
+                ];
+                let messageIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                
+                function typeWriter() {
+                    const currentMessage = messages[messageIndex];
+                    
+                    if (isDeleting) {
+                        typingElement.textContent = currentMessage.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        typingElement.textContent = currentMessage.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+                    
+                    let typeSpeed = isDeleting ? 50 : 100;
+                    
+                    if (!isDeleting && charIndex === currentMessage.length) {
+                        typeSpeed = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        messageIndex = (messageIndex + 1) % messages.length;
+                        typeSpeed = 500;
+                    }
+                    
+                    setTimeout(typeWriter, typeSpeed);
+                }
+                
+                typeWriter();
+            });
+        </script>
     </section>
 
     <!-- About Section -->
