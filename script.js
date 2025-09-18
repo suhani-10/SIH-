@@ -1,9 +1,10 @@
-
+// Global variables
 let currentLanguage = 'en';
 let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
 let recognition;
 let synthesis = window.speechSynthesis;
 
+// Sample internship data
 const internships = {
     en: [
         {
@@ -433,15 +434,6 @@ function scrollToInternships() {
 
 // Application Modal Functions
 function openApplicationModal(internshipTitle) {
-    // Check if user is authenticated
-    if (!window.clerkAuth?.isSignedIn()) {
-        alert('Please sign in to apply for internships.');
-        if (window.clerkAuth) {
-            document.getElementById('sign-in-btn').click();
-        }
-        return;
-    }
-    
     document.getElementById('applicationModal').classList.remove('hidden');
     document.getElementById('applicationTitle').textContent = `Apply for: ${internshipTitle}`;
     document.body.style.overflow = 'hidden';
@@ -461,14 +453,47 @@ function showSuccessNotification() {
     }, 5000);
 }
 
+// Check if user is logged in and update UI
+function checkAuthStatus() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    const guestButtons = document.getElementById('guestButtons');
+    const userButtons = document.getElementById('userButtons');
+    
+    if (currentUser) {
+        if (guestButtons) guestButtons.style.display = 'none';
+        if (userButtons) {
+            userButtons.classList.remove('hidden');
+            document.getElementById('userName').textContent = currentUser.name || 'User';
+        }
+    } else {
+        if (guestButtons) guestButtons.style.display = 'block';
+        if (userButtons) userButtons.classList.add('hidden');
+    }
+}
+
+// Logout function
+function logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userProfile');
+    window.location.reload();
+}
+
 // Form submission handler
 document.addEventListener('DOMContentLoaded', function() {
+    checkAuthStatus();
+    
     const applicationForm = document.getElementById('applicationForm');
     if (applicationForm) {
         applicationForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simulate form submission
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!currentUser) {
+                alert('Please login to apply for internships.');
+                window.location.href = 'login.html';
+                return;
+            }
+            
             setTimeout(() => {
                 closeApplicationModal();
                 showSuccessNotification();
