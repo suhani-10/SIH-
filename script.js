@@ -166,6 +166,27 @@ function setupEventListeners() {
     // Mobile menu
     document.getElementById('mobileMenu').addEventListener('click', toggleMobileMenu);
     
+    // Sign-in button fallback
+    const signInBtn = document.getElementById('sign-in-btn');
+    if (signInBtn) {
+        signInBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Sign-in button clicked (fallback handler)');
+            
+            // Try to use Clerk if available
+            if (window.Clerk && window.Clerk.openSignIn) {
+                window.Clerk.openSignIn();
+            } else if (window.clerkAuth && window.clerkAuth.openSignIn) {
+                window.clerkAuth.openSignIn();
+            } else {
+                // Ultimate fallback
+                alert('Please wait for the sign-in system to load, then try again.');
+                // Or redirect to a sign-in page
+                // window.location.href = 'https://your-signin-url.com';
+            }
+        });
+    }
+    
     // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
